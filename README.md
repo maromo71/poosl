@@ -78,7 +78,7 @@ Contribuições são bem-vindas! Caso queira adicionar material ou melhorias:
 
 ## 📬 Contato
 
-📧 Email: **professor.maromo@santalucia.edu**  
+📧 Email: **professormoraes@gmail.com**  
 🌐 Faculdade: [Faculdade Santa Lúcia](https://www.santalucia.edu.br)
 
 ---
