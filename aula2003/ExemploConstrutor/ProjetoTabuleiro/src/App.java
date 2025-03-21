@@ -10,6 +10,10 @@ public class App {
         int y = Integer.parseInt(sc.nextLine());
 
         double premio = tabu.jogar(x, y);
-        System.out.println(premio);
+        if(premio > 0){
+            System.out.println("Parabéns. Seu premio eh R$ " + premio);
+        }else{
+            System.out.println("Dancou. Deu banca");
+        }
     }
 }

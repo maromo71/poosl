@@ -44,7 +44,7 @@ public class Tabuleiro {
                     System.out.printf("[%3d]    ", matriz[i][j]);
                 }
             }
-            System.out.println();10
+            System.out.println();
             
         }
     }
