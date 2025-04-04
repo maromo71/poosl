@@ -4,7 +4,7 @@ public abstract class Conta {
     private int numConta;
     private String nomeCliente;
     private double saldo;
-
+    abstract double calcularTaxaDeManutencao();
     //métodos getters and setters
     public int getNumConta() {
         return numConta;
@@ -47,4 +47,6 @@ public abstract class Conta {
         System.out.println("Nome Cliente: " + nomeCliente);
         System.out.println("Saldo: " + saldo);
     }
+    
+
 }

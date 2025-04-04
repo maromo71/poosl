@@ -26,5 +26,8 @@ public class Corrente extends Conta{
         super.imprimir();
         System.out.println("Limite: " + limite);
     }
-    
+    @Override
+    public double calcularTaxaDeManutencao() {
+        return 22.0; // Exemplo de taxa de manutenção para conta corrente
+    }
 }
