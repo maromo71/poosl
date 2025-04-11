@@ -32,7 +32,6 @@ public class ControleApp {
             rp.setFunc(f);
             rp.setDataRegistro(LocalDate.now());
             rp.setHoraEntrada(LocalDateTime.of(LocalDate.now(), LocalTime.of(11,0,0)));
-            Thread.sleep(1000);
             rp.setHoraSaida(LocalDateTime.now());
             registros.add(rp);
         }
