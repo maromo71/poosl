@@ -60,8 +60,9 @@ public class RegistroPonto {
     }
 
     public BigDecimal calcularValorDia() {
-        if (func instanceof Operador operador) {
-            return operador.getValorHora().multiply(BigDecimal.valueOf(calcularHorasTrabalhadas()));
+        if (func instanceof Operador) {
+            Operador op = (Operador) func;
+            return op.getValorHora().multiply(BigDecimal.valueOf(calcularHorasTrabalhadas()));
         }
         return BigDecimal.ZERO;
     }
