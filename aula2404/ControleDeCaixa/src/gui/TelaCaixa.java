@@ -1,6 +1,10 @@
 package gui;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import model.Caixa;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,9 +15,12 @@ public class TelaCaixa extends JFrame implements ActionListener {
     private TextField txtValor, txtSaldo;
     private Button cmdEntrada, cmdRetirada, cmdConsulta, cmdSair;
     private TextArea txtMsg;
+    private Caixa caixa; // Objeto Caixa para manipulação de dados
 
     // construtor personalizado da janela
     public TelaCaixa() {
+        // Inicializa o objeto Caixa
+        caixa = new Caixa(); // Cria uma nova instância de Caixa
         // Dimensoes dos elementos
         dFrame = new Dimension(350, 400);
         dLabel = new Dimension(40, 20);
@@ -80,7 +87,57 @@ public class TelaCaixa extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        
+        //Objeto e: evento de acao
+        // Verifica qual botão foi pressionado e executa a ação correspondente
+        if(e.getSource() == cmdEntrada){
+            //rotina do depositar
+            double valor = Double.parseDouble(txtValor.getText());
+            boolean acaoOk = caixa.depositar(valor); // Chama o método depositar da classe Caixa
+            if(acaoOk){
+                txtMsg.append("Deposito realizado com sucesso!\n");
+            }else{
+                txtMsg.append("Valor inválido para depósito!\n");
+                return;
+            }
+            txtValor.setText(""); // Limpa o campo de valor após o depósito
+            txtSaldo.setText(""); // Limpa o campo de saldo após o depósito
+            txtValor.requestFocus();
+            mostrarCaixaDeDialogo("Depósito de " + valor + " realizado com sucesso!");  
+            return;
+        }
+        if(e.getSource() == cmdRetirada){
+            //rotina do sacar
+            double valor = Double.parseDouble(txtValor.getText());
+            boolean acaoOk = caixa.sacar(valor); // Chama o método sacar da classe Caixa
+            if(acaoOk){
+                txtMsg.append("Saque realizado com sucesso!\n");
+            }else{
+                txtMsg.append("Sem saldo disponível para o saque!\n");
+                return;
+            }
+            txtValor.setText(""); // Limpa o campo de valor após o saque
+            txtSaldo.setText(""); // Limpa o campo de saldo após o saque    
+            txtValor.requestFocus();
+            mostrarCaixaDeDialogo("Saque de " + valor + " realizado com sucesso!");
+            return;
+        }
+        if(e.getSource() == cmdConsulta){
+            //rotina do consultar
+            String strSaldo = String.valueOf(caixa.getSaldo());
+            txtSaldo.setText(strSaldo); // Atualiza o campo de saldo com o valor atual
+            txtMsg.append("Consulta realizada com sucesso!\n");
+            mostrarCaixaDeDialogo("Saldo atual R$ " + strSaldo);
+            return;
+        }
+        if(e.getSource() == cmdSair){
+            //rotina do sair
+            System.exit(0); // encerra o programa
+        }
+    }
+
+    private void mostrarCaixaDeDialogo(String mensagem) {
+        // Método para mostrar uma caixa de diálogo com a mensagem
+        JOptionPane.showMessageDialog(null,
+            mensagem, "Mensagem", JOptionPane.INFORMATION_MESSAGE);
     }
 }
